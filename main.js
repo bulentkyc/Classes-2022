@@ -45,6 +45,9 @@ console.log(CarModel);
 ///////////////////////////////////////////////////////////////////
 
 class CourseCreator {
+
+    roles = ['manager', 'trainer', 'assistant', 'attendee'];
+
     constructor(companyName) {
         this.companyName = companyName;
     }
@@ -62,6 +65,10 @@ class CourseCreator {
 
     showMeThis(){
         console.log(this);
+    }
+
+    printRoles(){
+        console.log(this.roles);
     }
 }
 
@@ -91,3 +98,43 @@ console.log(testCompany);
 console.log('this keyword');
 essence.showMeThis();
 testCompany.showMeThis();
+
+///////////////////////////////////////////////////////////////////
+
+testCompany.printRoles();
+console.log(testCompany.roles);
+
+///////////////////////////////////////////////////////////////////
+//Prototype of the Classes
+//Only mothods places on the prototype of the class.
+//Properties doesn't stays on the prototype. Directly places on the instances.
+//Prototype of classes get deeply cloned to all individual instances.
+
+console.log(CourseCreator.prototype);
+
+///////////////////////////////////////////////////////////////////
+//Extending Classes - Class inheritance
+
+class MyGenerator extends CourseCreator{
+
+    constructor(...args){
+        super(...args)
+        console.log('New Course is iniated!');
+    }
+
+    crossCheck(){
+        console.log(true);
+    }
+
+    printRoles(){
+        super.printRoles();
+        console.log('Roles are changed! Ha Ha Ha it was a joke that is not funny :((');
+    }
+}
+
+const theNextGen = new MyGenerator();
+
+theNextGen.printRoles();
+
+///////////////////////////////////////////////////////////////////
+
